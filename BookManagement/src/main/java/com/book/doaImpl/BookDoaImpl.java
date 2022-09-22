@@ -39,10 +39,15 @@ public class BookDoaImpl implements BookDoa
 		bookDto.setBookAuthor(ban);
 		bookDto.setBookType(bt);
 		bookDto.setBookPrice(p);
+		Book book = new Book();
+		book.setBookName(bookDto.getBookName());
+		book.setBookAuthor(bookDto.getBookAuthor());
+		book.setBookType(bookDto.getBookType());
+		book.setBookPrice(bookDto.getBookPrice());
 		
 		Session session = BookConfig.getSessionFactory().openSession();
 		Transaction tr = session.beginTransaction();
-		session.save(bookDto);
+		session.save(book);
 		System.out.println("data saved successfully...");
 		tr.commit();
 		
